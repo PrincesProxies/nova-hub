@@ -1,0 +1,234 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="theme-color" content="#070914">
+<title>NOVA HUB — Your universe</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;600;700;800&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#070914;--panel:#101426;--panel2:#151b31;--line:#252d49;--text:#f4f7ff;--muted:#929bb7;--blue:#4b9cff;--purple:#9a72ff;--accent:#4b9cff;--radius:18px;--player:78px}
+*{box-sizing:border-box}html,body{margin:0;min-height:100%;background:var(--bg);color:var(--text);font-family:"Space Grotesk",sans-serif}body{overflow-x:hidden}button,input,textarea,select{font:inherit}button{cursor:pointer;border:0;color:inherit}button:focus-visible,input:focus-visible,textarea:focus-visible,select:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+#stars{position:fixed;inset:0;pointer-events:none;z-index:0;overflow:hidden;background:radial-gradient(ellipse at 75% 10%,#17133b55,transparent 45%),radial-gradient(ellipse at 10% 80%,#102b4b55,transparent 45%),#070914}
+.star{position:absolute;border-radius:50%;opacity:.65;animation:twinkle 3s infinite ease-in-out alternate}@keyframes twinkle{to{opacity:.15;transform:scale(.55)}}.app{position:relative;z-index:1;min-height:100vh;padding-bottom:calc(var(--player) + 24px)}
+.topbar{height:76px;display:flex;align-items:center;justify-content:space-between;padding:0 clamp(16px,4vw,56px);border-bottom:1px solid #ffffff0d;background:#080b18c9;backdrop-filter:blur(18px);position:sticky;top:0;z-index:20}
+.brand{display:flex;align-items:center;gap:11px;font:800 18px Orbitron;letter-spacing:2px}.brandmark{width:35px;height:35px;border-radius:12px;background:linear-gradient(135deg,var(--accent),#805dff);display:grid;place-items:center;box-shadow:0 0 25px #4b9cff55;color:white;font-size:18px}
+.nav{display:flex;gap:5px;align-items:center}.nav button,.icon-btn{background:transparent;color:var(--muted);padding:10px 13px;border-radius:11px;transition:.2s}.nav button:hover,.nav button.active{background:#ffffff0c;color:white}.nav button.active{box-shadow:inset 0 -2px var(--accent)}.top-actions{display:flex;gap:8px;align-items:center}.avatar{width:34px;height:34px;border-radius:50%;display:grid;place-items:center;background:linear-gradient(135deg,#287be0,#8a63e8);font-weight:700}
+main{max-width:1240px;margin:auto;padding:34px clamp(16px,4vw,48px)}.page{display:none;animation:fade .25s ease}.page.active{display:block}@keyframes fade{from{opacity:0;transform:translateY(7px)}to{opacity:1;transform:none}}
+.eyebrow{color:var(--accent);font:700 11px Orbitron;letter-spacing:2px;text-transform:uppercase}.hero{padding:42px 0 30px;display:flex;align-items:center;justify-content:space-between;gap:24px}.hero h1{font:700 clamp(30px,5vw,52px) Orbitron;margin:9px 0 12px;letter-spacing:-1.8px}.hero p{color:var(--muted);max-width:560px;line-height:1.7;margin:0}.hero-orb{width:190px;height:190px;flex:none;border-radius:50%;background:radial-gradient(circle at 35% 30%,#a4d7ff,#397bdb 20%,#352b82 50%,#101426 72%);box-shadow:0 0 70px #397bdb44, inset -20px -20px 35px #070914aa;position:relative}.hero-orb:after{content:"";position:absolute;inset:-15px;border:1px solid #7ebcff55;border-radius:50%;transform:rotate(-25deg) scaleY(.35)}
+.grid{display:grid;gap:16px}.quick-grid{grid-template-columns:repeat(4,1fr)}.quick{background:linear-gradient(145deg,#171f39,#101426);border:1px solid var(--line);border-radius:var(--radius);padding:20px;min-height:120px;text-align:left;transition:.2s}.quick:hover,.card:hover{transform:translateY(-3px);border-color:#4b9cff77}.quick .glyph{font-size:22px}.quick strong{display:block;margin-top:13px;font-size:16px}.quick small{color:var(--muted)}
+.section-head{display:flex;align-items:center;justify-content:space-between;margin:28px 0 14px}.section-head h2{font:600 17px Orbitron;margin:0}.muted{color:var(--muted)}.small{font-size:12px}.btn{background:var(--accent);color:#06101f;padding:10px 15px;border-radius:11px;font-weight:700;transition:.2s}.btn:hover{filter:brightness(1.12);transform:translateY(-1px)}.btn.secondary{background:#202943;color:#eaf2ff;border:1px solid #34405f}.btn.ghost{background:transparent;color:var(--muted);border:1px solid var(--line)}.btn.danger{background:#542536;color:#ffdce5}.row{display:flex;gap:10px;align-items:center}.wrap{flex-wrap:wrap}.cards{grid-template-columns:repeat(auto-fill,minmax(210px,1fr))}.card{background:linear-gradient(145deg,#151c32,#0f1425);border:1px solid var(--line);border-radius:16px;overflow:hidden;transition:.2s;min-width:0}.cover{height:126px;display:grid;place-items:center;font-size:38px;background:radial-gradient(circle at 25% 20%,#3c75bf,#1c2450 55%,#101426)}.card-body{padding:14px}.card h3{font-size:15px;margin:0 0 5px}.card p{font-size:12px;color:var(--muted);line-height:1.5;margin:0 0 12px}.card-actions{display:flex;gap:7px}.card-actions button{flex:1;padding:8px;border-radius:9px;font-size:12px}.pill{border:1px solid var(--line);border-radius:99px;background:#11182a;color:var(--muted);padding:8px 12px;font-size:12px}.pill.active{background:#1c3761;border-color:var(--accent);color:white}
+.toolbar{display:flex;gap:10px;flex-wrap:wrap;margin:20px 0}.field{background:#0c1120;border:1px solid var(--line);border-radius:11px;padding:11px 13px;color:white;min-width:0}.field::placeholder{color:#717b98}.search{flex:1;min-width:190px}.empty{border:1px dashed #35405f;border-radius:16px;padding:28px;text-align:center;color:var(--muted)}
+.music-layout{display:grid;grid-template-columns:1.5fr 1fr;gap:18px}.panel{background:#101628;border:1px solid var(--line);border-radius:17px;padding:18px}.track{display:flex;align-items:center;gap:12px;padding:10px;border-radius:12px}.track:hover{background:#ffffff08}.art{width:43px;height:43px;border-radius:10px;display:grid;place-items:center;background:linear-gradient(135deg,#2465a8,#6c4bb4);flex:none}.track-info{flex:1;min-width:0}.track-info b,.track-info span{display:block;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}.track-info span{font-size:12px;color:var(--muted)}.track button{background:transparent;color:var(--muted);padding:7px}
+.player{position:fixed;bottom:0;left:0;right:0;height:var(--player);background:#0b1020ed;backdrop-filter:blur(20px);border-top:1px solid #34405c;z-index:30;display:flex;align-items:center;gap:18px;padding:10px clamp(12px,3vw,34px)}.player-track{display:flex;align-items:center;gap:10px;min-width:180px;flex:1}.player-track .art{width:46px;height:46px}.player-controls{display:flex;align-items:center;gap:8px}.player-controls button{background:transparent;color:#c8d5ee;font-size:17px;padding:7px}.player-controls .play{background:var(--accent);color:#07101e;width:36px;height:36px;border-radius:50%}.progress-wrap{display:flex;align-items:center;gap:8px;flex:1;max-width:360px;font-size:10px;color:var(--muted)}input[type=range]{accent-color:var(--accent);min-width:50px;width:100%}.volume{width:90px}
+.chat-layout{display:grid;grid-template-columns:300px 1fr;gap:14px;min-height:530px}.chat-list{padding:10px}.conversation{padding:12px;border-radius:12px;display:flex;gap:10px;align-items:center;cursor:pointer}.conversation:hover,.conversation.active{background:#202943}.chat-window{display:flex;flex-direction:column;min-height:530px}.chat-head{padding:10px 4px 14px;border-bottom:1px solid var(--line);display:flex;align-items:center;gap:10px}.messages{flex:1;overflow:auto;padding:16px 4px;display:flex;flex-direction:column;gap:10px}.bubble{max-width:78%;padding:10px 13px;border-radius:14px;background:#202943;align-self:flex-start;line-height:1.45;overflow-wrap:anywhere}.bubble.mine{align-self:flex-end;background:#1e4b83}.bubble small{display:block;color:#b5c7e5;font-size:10px;margin-top:4px}.composer{display:flex;gap:8px;padding-top:12px;border-top:1px solid var(--line)}.composer textarea{flex:1;resize:none;min-height:42px;max-height:110px}
+.profile-head{display:flex;gap:18px;align-items:center;padding:22px;background:linear-gradient(120deg,#1a2b4c,#17152f);border:1px solid var(--line);border-radius:18px}.big-avatar{width:76px;height:76px;border-radius:22px;background:linear-gradient(135deg,#347fe3,#9868e8);display:grid;place-items:center;font-size:30px;font-weight:700}
+.settings-grid{grid-template-columns:repeat(auto-fit,minmax(240px,1fr))}.setting{padding:16px;background:#101628;border:1px solid var(--line);border-radius:15px}.setting label{display:block;margin-bottom:9px;font-size:13px}.setting .field{width:100%}
+.overlay{position:fixed;inset:0;z-index:100;background:radial-gradient(ellipse at 50% 25%,#1c2a50,#070914 70%);display:grid;place-items:center;padding:20px}.auth-card{width:min(430px,100%);background:#101629eF;border:1px solid #354264;border-radius:22px;padding:30px;box-shadow:0 25px 100px #0009;text-align:center}.auth-card h1{font:800 24px Orbitron;letter-spacing:3px;margin:14px 0 8px}.auth-card p{color:var(--muted);font-size:13px;line-height:1.6}.auth-card .field{width:100%;margin:7px 0}.auth-card .btn{width:100%;margin-top:8px}.auth-card .row .btn{width:auto;flex:1}.auth-card .brandmark{margin:auto;width:52px;height:52px;font-size:24px}.auth-card .hint{font-size:11px;color:#74809e;margin-top:14px}.auth-card .error{color:#ff91a9;min-height:18px;font-size:12px}
+.modal{position:fixed;inset:0;background:#02040bc9;z-index:90;display:none;place-items:center;padding:16px}.modal.open{display:grid}.modal-box{width:min(560px,100%);max-height:85vh;overflow:auto;background:#11182b;border:1px solid #3a4666;border-radius:18px;padding:22px}.modal-box h2{font:600 18px Orbitron}.modal-box .field{width:100%;margin:6px 0 12px}
+.notice{padding:11px 13px;border:1px solid #725b2c;background:#302817;color:#f6dca5;border-radius:12px;font-size:12px;line-height:1.5;margin:12px 0}
+.mobile-menu{display:none}
+@media(max-width:850px){.nav{display:none}.mobile-menu{display:block}.quick-grid{grid-template-columns:repeat(2,1fr)}.hero-orb{width:130px;height:130px}.music-layout{grid-template-columns:1fr}.chat-layout{grid-template-columns:1fr}.chat-list{max-height:220px;overflow:auto}.player{gap:8px}.player-track{min-width:0}.progress-wrap{max-width:150px}.volume{display:none}}
+@media(max-width:560px){:root{--player:94px}.topbar{height:64px}.hero{padding:25px 0;align-items:flex-start}.hero-orb{width:75px;height:75px}.hero h1{font-size:28px}.quick-grid{gap:9px}.quick{padding:14px;min-height:108px}.quick strong{font-size:14px}.player{height:var(--player);display:grid;grid-template-columns:1fr auto;grid-template-rows:1fr 22px;gap:0 8px}.player-track{grid-column:1;grid-row:1}.player-controls{grid-column:2;grid-row:1}.progress-wrap{grid-column:1/-1;grid-row:2;max-width:none;width:100%}.progress-wrap span{white-space:nowrap}.profile-head{align-items:flex-start}.hero p{font-size:13px}}
+</style>
+</head>
+<body>
+<div id="stars"></div>
+<div id="gate" class="overlay" style="display:none">
+ <div class="auth-card">
+  <div class="brandmark">✦</div><div class="eyebrow">A universe of your own</div><h1>NOVA HUB</h1>
+  <p id="gateText">Enter the shared access code to unlock Nova Hub.</p>
+  <form id="accessForm"><div id="gateFields"><input id="accessCode" class="field" type="password" inputmode="numeric" pattern="[0-9]*" maxlength="6" placeholder="Enter 6-digit access code" autocomplete="off" autocapitalize="off"><button class="btn" id="unlockBtn" type="submit">Unlock Nova Hub</button></div></form>
+  <div class="error" id="gateError"></div><div class="hint">Shared access gate · client-side demo only</div>
+ </div>
+</div>
+<div id="accountGate" class="overlay">
+ <div class="auth-card"><div class="brandmark">✦</div><div class="eyebrow">Welcome aboard</div><h1>ENTER YOUR ORBIT</h1><p>Create a secure NOVA HUB account or sign in.</p>
+ <div class="grid" style="grid-template-columns:1fr;gap:9px;margin-top:18px">
+ <button class="btn" id="showSignIn">Sign in</button><button class="btn secondary" id="showCreate">Create account</button></div>
+ <div class="hint">Accounts are managed securely by Supabase. Do not share your password.</div></div>
+</div>
+<div id="authModal" class="overlay" style="display:none">
+ <div class="auth-card"><button class="icon-btn" id="authBack" style="float:right">✕</button><div class="brandmark">✦</div><h1 id="authTitle">SIGN IN</h1><p id="authDescription">Access your local profile.</p>
+ <div id="authInputs"></div><button class="btn" id="authSubmit">Continue</button><div class="error" id="authError"></div><button class="btn ghost" id="authSwitch">Create a profile</button></div>
+</div>
+<div class="app" id="app" style="display:none">
+<header class="topbar"><div class="brand"><div class="brandmark">✦</div><span>NOVA HUB</span></div>
+<nav class="nav" id="nav">
+<button data-page="home" class="active">Home</button><button data-page="games">Games</button><button data-page="music">Music</button><button data-page="chat">Chat <span id="unreadBadge"></span></button><button data-page="profile">Profile</button><button data-page="settings">Settings</button></nav>
+<div class="top-actions"><button class="icon-btn mobile-menu" id="mobileNav">☰</button><div class="avatar" id="topAvatar">G</div><button class="icon-btn" id="logoutBtn" title="Exit profile">↪</button></div></header>
+<main>
+<section class="page active" id="page-home"><div class="hero"><div><div class="eyebrow">Your space. Your soundtrack. Your people.</div><h1 id="welcome">Welcome to your universe.</h1><p>Jump into a game, put on a soundtrack, or explore your space. Everything you need, all in one orbit.</p></div><div class="hero-orb"></div></div>
+<div class="grid quick-grid">
+<button class="quick" data-go="games"><span class="glyph">🎮</span><strong>Explore games</strong><small>Find your next favorite</small></button>
+<button class="quick" data-go="music"><span class="glyph">♫</span><strong>Nova Music</strong><small>Your personal listening space</small></button>
+<button class="quick" data-go="chat"><span class="glyph">✉</span><strong>Nova Chat</strong><small>Local demo conversations</small></button>
+<button class="quick" data-go="profile"><span class="glyph">◉</span><strong>Your profile</strong><small>Make this space yours</small></button></div>
+<div class="section-head"><h2>Recently played</h2><button class="btn ghost small" data-go="games">View games</button></div><div id="homeRecentGames" class="grid cards"></div>
+<div class="section-head"><h2>Recently played music</h2><button class="btn ghost small" data-go="music">Open music</button></div><div id="homeRecentMusic" class="panel"></div>
+</section>
+<section class="page" id="page-games"><div class="eyebrow">Nova arcade</div><div class="hero" style="padding-top:12px"><div><h1>Game library</h1><p>Discover something new. Games that allow embedding open right here; other hosts may block in-page play.</p></div></div>
+<div class="toolbar"><input id="gameSearch" class="field search" placeholder="Search games…"><select id="gameSort" class="field"><option value="featured">Featured</option><option value="az">Alphabetical</option><option value="recent">Recently played</option><option value="favorites">Favorites first</option></select></div>
+<div class="row wrap" id="categories" style="margin-bottom:18px"></div><div id="gamesGrid" class="grid cards"></div>
+<div id="gamePlayer" class="panel" style="display:none;margin-top:20px"><div class="row" style="justify-content:space-between"><div><div class="eyebrow">Now playing</div><h2 id="playingTitle" style="font:600 18px Orbitron;margin:8px 0"></h2></div><button class="btn ghost" id="closeGame">Back to library</button></div><p id="playingDesc" class="muted small"></p><div class="row wrap" style="margin:12px 0"><button class="btn secondary" id="reloadGame">↻ Reload</button><button class="btn secondary" id="fullGame">⛶ Fullscreen</button><button class="btn ghost" id="favoritePlaying">☆ Favorite</button><a id="openExternal" class="btn ghost" target="_blank" rel="noopener">Open source ↗</a></div><div id="embedNotice" class="notice" style="display:none"></div><iframe id="gameFrame" title="Game player" allow="fullscreen; autoplay; gamepad" style="width:100%;height:min(68vh,620px);border:1px solid var(--line);border-radius:13px;background:#080b16" referrerpolicy="strict-origin-when-cross-origin"></iframe></div>
+</section>
+<section class="page" id="page-music"><div class="eyebrow">Nova sound</div><div class="hero" style="padding-top:12px"><div><h1>Nova Music</h1><p>A personal music space. Add your own audio files to listen in this browser. No licensed streaming catalog is connected.</p></div></div>
+<div class="notice">Demo mode: audio files are selected from your device and are not uploaded. Playback may stop when the page is closed. Only use audio you have permission to play.</div>
+<div class="toolbar"><input id="musicSearch" class="field search" placeholder="Search your music…"><label class="btn secondary" for="audioUpload">＋ Add audio files</label><input id="audioUpload" type="file" accept="audio/*" multiple hidden><button class="btn ghost" id="newPlaylist">＋ Playlist</button></div>
+<div class="music-layout"><div class="panel"><div class="section-head" style="margin-top:0"><h2>Your tracks</h2><span class="muted small" id="trackCount">0 tracks</span></div><div id="trackList"></div></div>
+<div class="panel"><div class="section-head" style="margin-top:0"><h2>Your playlists</h2></div><div id="playlistList"></div><div class="section-head"><h2>Favorites</h2></div><div id="favoriteTracks"></div></div></div>
+</section>
+<section class="page" id="page-chat"><div class="eyebrow">Nova social</div><div class="hero" style="padding-top:12px"><div><h1>Nova Chat</h1><p>Keep conversations in one place. This version stores demo messages in this browser only.</p></div><button class="btn secondary" id="newConversation">＋ New chat</button></div>
+<div class="notice">Local demo only: messages are not delivered to other people or synced across devices. Real private messaging requires a configured backend with server-side access controls.</div>
+<div class="chat-layout"><div class="panel chat-list"><input id="conversationSearch" class="field" style="width:100%;margin-bottom:8px" placeholder="Search conversations"><div id="conversationList"></div><button class="btn ghost" id="newGroup" style="width:100%;margin-top:10px">＋ Create group</button></div>
+<div class="panel chat-window"><div class="chat-head"><div class="avatar" id="chatAvatar">N</div><div style="flex:1"><b id="chatTitle">Choose a conversation</b><div class="muted small" id="chatSubtitle">Local demo</div></div></div><div class="messages" id="messages"><div class="empty">Select a conversation to view messages.</div></div><div class="composer"><textarea id="messageInput" class="field" placeholder="Write a message…" maxlength="2000"></textarea><button class="btn" id="sendMessage">Send</button></div></div></div>
+</section>
+<section class="page" id="page-profile"><div class="eyebrow">Your identity</div><h1 style="font:700 30px Orbitron">Profile</h1><div class="profile-head"><div class="big-avatar" id="profileAvatar">G</div><div style="flex:1"><h2 id="profileName" style="margin:0 0 4px"></h2><div class="muted" id="profileHandle"></div><p class="small muted">Your local Nova Hub profile</p></div><button class="btn secondary" id="editProfile">Edit profile</button></div>
+<div class="grid settings-grid" style="margin-top:18px"><div class="panel"><h3>Favorite games</h3><div id="profileGames" class="muted small">No favorites yet.</div></div><div class="panel"><h3>Favorite music</h3><div id="profileMusic" class="muted small">No favorites yet.</div></div><div class="panel"><h3>Playlists</h3><div id="profilePlaylists" class="muted small">No playlists yet.</div></div></div></section>
+<section class="page" id="page-settings"><div class="eyebrow">Tune your experience</div><h1 style="font:700 30px Orbitron">Settings</h1><div class="grid settings-grid">
+<div class="setting"><label>Accent color</label><select id="accentSelect" class="field"><option value="#4b9cff">Nova blue</option><option value="#9a72ff">Nebula purple</option><option value="#31c7a0">Aurora green</option><option value="#ff9b54">Solar orange</option><option value="#f06d9b">Cosmic pink</option></select></div>
+<div class="setting"><label>Star animation</label><select id="starSetting" class="field"><option value="on">On</option><option value="off">Off</option></select></div>
+<div class="setting"><label>Music volume</label><input id="settingsVolume" type="range" min="0" max="1" step=".01" style="width:100%"></div>
+<div class="setting"><label>Display name</label><input id="settingsName" class="field" placeholder="Display name"><button class="btn secondary" id="saveSettingsName" style="margin-top:9px">Save name</button></div>
+<div class="setting"><label>Personal data</label><p class="small muted">Export or clear the data saved by this local demo in this browser.</p><div class="row wrap"><button class="btn secondary" id="exportData">Export data</button><button class="btn danger" id="clearRecent">Clear history</button></div></div>
+<div class="setting"><label>Session</label><p class="small muted">Leave this local profile on this device.</p><button class="btn danger" id="signOut">Sign out</button></div>
+</div></section>
+</main>
+</div>
+<div class="player" id="player" style="display:none"><div class="player-track"><div class="art" id="playerArt">♫</div><div class="track-info"><b id="playerTitle">Nothing playing</b><span id="playerArtist">Add an audio file to begin</span></div></div>
+<div class="player-controls"><button id="prevTrack" title="Previous">⏮</button><button class="play" id="playPause" title="Play">▶</button><button id="nextTrack" title="Next">⏭</button></div>
+<div class="progress-wrap"><span id="currentTime">0:00</span><input id="progress" type="range" min="0" max="100" value="0"><span id="totalTime">0:00</span></div><input class="volume" id="volume" type="range" min="0" max="1" step=".01" value=".75" title="Volume"><audio id="audio"></audio></div>
+<div class="modal" id="modal"><div class="modal-box"><div class="row" style="justify-content:space-between"><h2 id="modalTitle">Edit</h2><button class="icon-btn" id="modalClose">✕</button></div><div id="modalContent"></div></div></div>
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script>
+(()=>{
+"use strict";
+const $=s=>document.querySelector(s), $$=s=>[...document.querySelectorAll(s)];
+const SUPABASE_URL="https://gqvpjntsaqgvtwtuxfve.supabase.co";
+const SUPABASE_PUBLISHABLE_KEY="sb_publishable_MhHz-ghLwjSM8hcwy5SFMg_ZQtuVBb_";
+const sb=window.supabase.createClient(SUPABASE_URL,SUPABASE_PUBLISHABLE_KEY);
+const KEY="novaHubLocalDemo_v1";
+const catalog=[
+{id:"sandboxels",title:"Sandboxels",category:"Sandbox",description:"A falling-sand simulation with materials and experiments.",url:"https://sandboxels.r74n.com/",embed:"https://sandboxels.r74n.com/",icon:"🧪"},
+{id:"2048",title:"2048",category:"Puzzle",description:"Combine matching tiles and work toward the 2048 tile.",url:"https://play2048.co/",embed:"https://play2048.co/",icon:"🔢"},
+{id:"hextris",title:"Hextris",category:"Puzzle",description:"A fast-paced hexagon puzzle game.",url:"https://hextris.io/",embed:"https://hextris.io/",icon:"⬡"},
+{id:"pacman",title:"Pac-Man",category:"Arcade",description:"A classic maze-chase experience from an external host.",url:"https://www.google.com/logos/2010/pacman10-i.html",embed:"https://www.google.com/logos/2010/pacman10-i.html",icon:"🟡"},
+{id:"littlealchemy",title:"Little Alchemy 2",category:"Creative",description:"Combine elements and discover new creations.",url:"https://littlealchemy2.com/",embed:"https://littlealchemy2.com/",icon:"⚗️"},
+{id:"tetris",title:"Tetris",category:"Puzzle",description:"Arrange falling shapes and clear complete lines.",url:"https://tetris.com/play-tetris",embed:"https://tetris.com/play-tetris",icon:"🧩"}
+];
+const categories=["All","Arcade","Platformer","Racing","Puzzle","Sandbox","Multiplayer","Strategy","Simulation","Adventure","Sports","Casual","Action","Survival","Creative","Educational"];
+let state={profile:null,guest:false,profiles:[],gamesFav:[],recentGames:[],tracks:[],trackFav:[],playlists:[],recentTracks:[],conversations:[],activeConversation:null,accent:"#4b9cff",stars:true,volume:.75,displayName:""};
+let currentGame=null,currentTrack=-1,currentCategory="All",objectUrls=[];
+function load(){try{const x=JSON.parse(localStorage.getItem(KEY)||"{}");state={...state,...x};}catch(e){}}
+function save(){try{localStorage.setItem(KEY,JSON.stringify({...state,tracks:state.tracks.map(t=>({...t,src:null}))}));}catch(e){toast("Browser storage is full. Audio files are not saved.");}}
+function toast(msg){let n=$("#toast");if(!n){n=document.createElement("div");n.id="toast";n.style.cssText="position:fixed;top:88px;left:50%;transform:translateX(-50%);z-index:200;background:#202b45;border:1px solid #526486;padding:11px 16px;border-radius:12px;box-shadow:0 10px 30px #0008;font-size:13px";document.body.append(n)}n.textContent=msg;n.style.display="block";clearTimeout(n._t);n._t=setTimeout(()=>n.style.display="none",2400)}
+function initials(s){return (s||"N").trim().slice(0,1).toUpperCase()}
+function showAuthMessage(message,isError=true){const el=$("#authError");el.textContent=message;el.style.color=isError?"#ff91a9":"#9ce6c0";}
+function auth(mode){
+  $("#accountGate").style.display="none";$("#authModal").style.display="grid";
+  $("#authTitle").textContent=mode==="create"?"CREATE ACCOUNT":"SIGN IN";
+  $("#authDescription").textContent=mode==="create"?"Create your own NOVA HUB account.":"Sign in with your email and password.";
+  showAuthMessage("");
+  const common='<input class="field" id="aEmail" type="email" autocomplete="email" placeholder="Email address" required><input class="field" id="aPassword" type="password" autocomplete="'+(mode==="create"?"new-password":"current-password")+'" placeholder="Password" required>';
+  const extra=mode==="create"?'<input class="field" id="aUsername" maxlength="20" placeholder="Username (3–20 letters, numbers, _)" required><input class="field" id="aDisplay" maxlength="32" placeholder="Display name"><select class="field" id="aAvatar"><option>✦</option><option>🚀</option><option>🌙</option><option>🎮</option><option>🐈</option><option>👾</option></select>':'';
+  $("#authInputs").innerHTML=common+extra;
+  $("#authSubmit").textContent=mode==="create"?"Create account":"Sign in";
+  $("#authSwitch").textContent=mode==="create"?"Back to sign in":"Create an account";
+  $("#authSubmit").onclick=async()=>{
+    const email=$("#aEmail").value.trim().toLowerCase();
+    const password=$("#aPassword").value;
+    if(!email||!password){showAuthMessage("Enter your email and password.");return;}
+    $("#authSubmit").disabled=true;$("#authSubmit").textContent="Please wait…";
+    try{
+      if(mode==="create"){
+        const username=$("#aUsername").value.trim().toLowerCase();
+        if(!/^[a-z0-9_]{3,20}$/.test(username)){showAuthMessage("Username must be 3–20 characters: lowercase letters, numbers, or underscores.");return;}
+        if(password.length<10){showAuthMessage("Use a password with at least 10 characters.");return;}
+        const displayName=$("#aDisplay").value.trim()||username;
+        const avatar=$("#aAvatar").value;
+        const {data,error}=await sb.auth.signUp({email,password,options:{data:{username,display_name:displayName,avatar},emailRedirectTo:location.origin}});
+        if(error)throw error;
+        if(data.session){await loadUserProfile(data.user);enter();}
+        else showAuthMessage("Account created. Check your email for the confirmation link, then come back here and sign in.",false);
+      }else{
+        const {data,error}=await sb.auth.signInWithPassword({email,password});
+        if(error)throw error;
+        await loadUserProfile(data.user);enter();
+      }
+    }catch(err){showAuthMessage(err.message||"Could not complete sign-in. Please try again.");}
+    finally{$("#authSubmit").disabled=false;$("#authSubmit").textContent=mode==="create"?"Create account":"Sign in";}
+  };
+  $("#authSwitch").onclick=()=>{if(mode==="create"){ $("#authModal").style.display="none";$("#accountGate").style.display="grid";}else auth("create");};
+  $("#authBack").onclick=()=>{$("#authModal").style.display="none";$("#accountGate").style.display="grid";};
+}
+async function loadUserProfile(user){
+  const {data,error}=await sb.from("profiles").select("id,username,display_name,avatar").eq("id",user.id).single();
+  if(error)throw new Error("Your account signed in, but the profiles table is not ready yet. Run the NOVA HUB setup SQL in Supabase, then sign in again.");
+  state.profile={id:data.id,username:data.username,displayName:data.display_name,avatar:data.avatar||"✦"};
+  state.guest=false;save();
+}
+async function initAuth(){
+  load();
+  $("#showSignIn").onclick=()=>auth("signin");
+  $("#showCreate").onclick=()=>auth("create");
+  $("#accountGate").style.display="grid";
+  try{
+    const {data,error}=await sb.auth.getSession();if(error)throw error;
+    if(data.session){await loadUserProfile(data.session.user);enter();}
+  }catch(err){showAuthMessage(err.message||"Could not connect to Supabase.");$("#authModal").style.display="grid";$("#accountGate").style.display="none";}
+}
+function enter(){$("#authModal").style.display="none";$("#accountGate").style.display="none";$("#app").style.display="block";$("#player").style.display="flex";applySettings();renderAll();nav("home")}
+function applySettings(){document.documentElement.style.setProperty("--accent",state.accent);$("#accentSelect").value=state.accent;$("#starSetting").value=state.stars?"on":"off";$("#volume").value=state.volume;$("#settingsVolume").value=state.volume;$("#audio").volume=state.volume;$("#settingsName").value=state.profile?.displayName||""}
+function nav(page){$$(".page").forEach(p=>p.classList.toggle("active",p.id==="page-"+page));$$(".nav button").forEach(b=>b.classList.toggle("active",b.dataset.page===page));window.scrollTo({top:0,behavior:"smooth"});if(page==="chat")renderChat()}
+$$("[data-page]").forEach(b=>b.onclick=()=>nav(b.dataset.page));$$("[data-go]").forEach(b=>b.onclick=()=>nav(b.dataset.go));
+$("#mobileNav").onclick=()=>{let n=$("#nav");n.style.display=n.style.display==="flex"?"none":"flex";n.style.position="absolute";n.style.top="64px";n.style.left="10px";n.style.right="10px";n.style.padding="10px";n.style.background="#101629";n.style.border="1px solid var(--line)";n.style.borderRadius="14px";n.style.flexWrap="wrap";n.style.justifyContent="center"};
+function gameCard(g){let fav=state.gamesFav.includes(g.id);return `<article class="card"><div class="cover">${g.icon}</div><div class="card-body"><h3>${esc(g.title)}</h3><p>${esc(g.description)}</p><div class="row" style="justify-content:space-between;margin-bottom:10px"><span class="pill">${esc(g.category)}</span><button class="icon-btn" data-fav-game="${g.id}" title="Favorite">${fav?"★":"☆"}</button></div><div class="card-actions"><button class="btn" data-play-game="${g.id}">Play</button><button class="btn ghost" data-open-game="${g.id}">↗</button></div></div></article>`}
+function renderGames(){let q=$("#gameSearch").value.toLowerCase(),sort=$("#gameSort").value;let arr=catalog.filter(g=>(currentCategory==="All"||g.category===currentCategory)&&(`${g.title} ${g.description} ${g.category}`).toLowerCase().includes(q));if(sort==="az")arr.sort((a,b)=>a.title.localeCompare(b.title));if(sort==="favorites")arr.sort((a,b)=>state.gamesFav.includes(b.id)-state.gamesFav.includes(a.id));if(sort==="recent")arr.sort((a,b)=>state.recentGames.indexOf(b.id)-state.recentGames.indexOf(a.id));$("#gamesGrid").innerHTML=arr.length?arr.map(gameCard).join(""):'<div class="empty">No games match that search.</div>';$("#categories").innerHTML=categories.map(c=>`<button class="pill ${currentCategory===c?"active":""}" data-category="${c}">${c}</button>`).join("");$$("[data-category]").forEach(b=>b.onclick=()=>{currentCategory=b.dataset.category;renderGames()});$$("[data-fav-game]").forEach(b=>b.onclick=()=>{let id=b.dataset.favGame;state.gamesFav=state.gamesFav.includes(id)?state.gamesFav.filter(x=>x!==id):[...state.gamesFav,id];save();renderGames();renderProfile()});$$("[data-play-game]").forEach(b=>b.onclick=()=>playGame(b.dataset.playGame));$$("[data-open-game]").forEach(b=>b.onclick=()=>{let g=catalog.find(x=>x.id===b.dataset.openGame);window.open(g.url,"_blank","noopener")})}
+function playGame(id){let g=catalog.find(x=>x.id===id);if(!g)return;currentGame=g;state.recentGames=[id,...state.recentGames.filter(x=>x!==id)].slice(0,12);save();$("#gamePlayer").style.display="block";$("#playingTitle").textContent=g.title;$("#playingDesc").textContent=g.description;$("#gameFrame").src=g.embed;$("#openExternal").href=g.url;$("#embedNotice").style.display="block";$("#embedNotice").textContent="If the game area stays blank, the host may block embedding. Use “Open source” to visit the game's official page.";$("#favoritePlaying").textContent=state.gamesFav.includes(id)?"★ Favorited":"☆ Favorite";$("#favoritePlaying").onclick=()=>{state.gamesFav=state.gamesFav.includes(id)?state.gamesFav.filter(x=>x!==id):[...state.gamesFav,id];save();$("#favoritePlaying").textContent=state.gamesFav.includes(id)?"★ Favorited":"☆ Favorite";renderGames()};$("#gamePlayer").scrollIntoView({behavior:"smooth"});renderHome();renderProfile()}
+$("#closeGame").onclick=()=>{$("#gameFrame").src="about:blank";$("#gamePlayer").style.display="none"};$("#reloadGame").onclick=()=>{if(currentGame)$("#gameFrame").src=currentGame.embed};$("#fullGame").onclick=()=>$("#gameFrame").requestFullscreen?.();
+$("#gameSearch").oninput=renderGames;$("#gameSort").onchange=renderGames;
+function esc(s){return String(s??"").replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]))}
+function formatTime(s){if(!Number.isFinite(s))return"0:00";return Math.floor(s/60)+":"+String(Math.floor(s%60)).padStart(2,"0")}
+function renderTracks(){let q=$("#musicSearch").value.toLowerCase();let list=state.tracks.filter(t=>(t.name+" "+t.artist).toLowerCase().includes(q));$("#trackCount").textContent=state.tracks.length+" tracks";$("#trackList").innerHTML=list.length?list.map(t=>trackRow(t)).join(""):'<div class="empty">No audio added yet. Choose audio files from your device to build your library.</div>';$("#favoriteTracks").innerHTML=state.trackFav.length?state.trackFav.map(id=>{let t=state.tracks.find(x=>x.id===id);return t?trackRow(t):""}).join(""):'<div class="muted small">No favorites yet.</div>';$("#playlistList").innerHTML=state.playlists.length?state.playlists.map(p=>`<div class="track"><div class="art">♫</div><div class="track-info"><b>${esc(p.name)}</b><span>${p.ids.length} tracks</span></div><button data-playlist="${p.id}">▶</button><button data-rename-playlist="${p.id}">✎</button><button data-delete-playlist="${p.id}">✕</button></div>`).join(""):'<div class="muted small">Create a playlist to collect your tracks.</div>';
+$$("[data-track-play]").forEach(b=>b.onclick=()=>playTrack(b.dataset.trackPlay));$$("[data-track-fav]").forEach(b=>b.onclick=()=>{let id=b.dataset.trackFav;state.trackFav=state.trackFav.includes(id)?state.trackFav.filter(x=>x!==id):[...state.trackFav,id];save();renderTracks();renderProfile()});$$("[data-track-add]").forEach(b=>b.onclick=()=>addToPlaylist(b.dataset.trackAdd));$$("[data-playlist]").forEach(b=>playPlaylist(b.dataset.playlist));$$("[data-rename-playlist]").forEach(b=>renamePlaylist(b.dataset.renamePlaylist));$$("[data-delete-playlist]").forEach(b=>{b.onclick=()=>{if(confirm("Delete this playlist?")){state.playlists=state.playlists.filter(p=>p.id!==b.dataset.deletePlaylist);save();renderTracks()}}})}
+function trackRow(t){return `<div class="track"><div class="art">♫</div><div class="track-info"><b>${esc(t.name)}</b><span>${esc(t.artist||"Unknown artist")}</span></div><button data-track-play="${t.id}">▶</button><button data-track-fav="${t.id}">${state.trackFav.includes(t.id)?"★":"☆"}</button><button data-track-add="${t.id}">＋</button></div>`}
+$("#audioUpload").onchange=e=>{[...e.target.files].forEach(f=>{let id="t"+Date.now()+Math.random().toString(16).slice(2);let src=URL.createObjectURL(f);objectUrls.push(src);state.tracks.push({id,name:f.name.replace(/\.[^.]+$/,""),artist:"Local audio",src,duration:0});});save();renderTracks();toast("Audio added for this session.");e.target.value=""};
+$("#musicSearch").oninput=renderTracks;
+function playTrack(id){let i=state.tracks.findIndex(t=>t.id===id);if(i<0)return;currentTrack=i;let t=state.tracks[i];if(!t.src){toast("This audio file must be added again after a page reload.");return}$("#audio").src=t.src;$("#audio").play().then(()=>{$("#playPause").textContent="Ⅱ"}).catch(()=>toast("Playback could not start. Tap play to try again."));$("#playerTitle").textContent=t.name;$("#playerArtist").textContent=t.artist||"Unknown artist";$("#playerArt").textContent="♫";state.recentTracks=[id,...state.recentTracks.filter(x=>x!==id)].slice(0,15);save();renderTracks();renderHome()}
+$("#playPause").onclick=()=>{let a=$("#audio");if(!a.src){toast("Add an audio file first.");return}if(a.paused)a.play().then(()=>$("#playPause").textContent="Ⅱ");else{a.pause();$("#playPause").textContent="▶"}};
+$("#prevTrack").onclick=()=>{if(!state.tracks.length)return;playTrack(state.tracks[(currentTrack-1+state.tracks.length)%state.tracks.length].id)};$("#nextTrack").onclick=()=>{if(!state.tracks.length)return;playTrack(state.tracks[(currentTrack+1)%state.tracks.length].id)};
+$("#audio").ontimeupdate=()=>{let a=$("#audio");$("#progress").value=a.duration?a.currentTime/a.duration*100:0;$("#currentTime").textContent=formatTime(a.currentTime);$("#totalTime").textContent=formatTime(a.duration)};$("#audio").onended=()=>$("#nextTrack").click();$("#progress").oninput=()=>{let a=$("#audio");if(a.duration)a.currentTime=a.duration*$("#progress").value/100};
+$("#volume").oninput=()=>{state.volume=+$("#volume").value;$("#audio").volume=state.volume;$("#settingsVolume").value=state.volume;save()};$("#settingsVolume").oninput=()=>{$("#volume").value=state.volume=+$("#settingsVolume").value;$("#audio").volume=state.volume;save()};
+function addToPlaylist(id){if(!state.playlists.length){toast("Create a playlist first.");return}showModal("Add to playlist",state.playlists.map(p=>`<button class="btn secondary" style="width:100%;margin:5px 0" data-add-to="${p.id}">${esc(p.name)}</button>`).join(""));$$("[data-add-to]").forEach(b=>b.onclick=()=>{let p=state.playlists.find(x=>x.id===b.dataset.addTo);if(!p.ids.includes(id))p.ids.push(id);save();closeModal();renderTracks();toast("Added to playlist.")})}
+function playPlaylist(id){let p=state.playlists.find(x=>x.id===id);let t=p?.ids.map(x=>state.tracks.find(y=>y.id===x)).find(Boolean);if(t)playTrack(t.id);else toast("This playlist has no available tracks.")}
+function renamePlaylist(id){let p=state.playlists.find(x=>x.id===id);let n=prompt("New playlist name",p.name);if(n?.trim()){p.name=n.trim();save();renderTracks()}}
+$("#newPlaylist").onclick=()=>{let n=prompt("Name your playlist");if(n?.trim()){state.playlists.push({id:"p"+Date.now(),name:n.trim(),ids:[]});save();renderTracks();renderProfile()}};
+function renderHome(){let gs=state.recentGames.slice(0,4).map(id=>catalog.find(g=>g.id===id)).filter(Boolean);$("#homeRecentGames").innerHTML=gs.length?gs.map(gameCard).join(""):'<div class="empty">Games you play will appear here.</div>';let ts=state.recentTracks.map(id=>state.tracks.find(t=>t.id===id)).filter(Boolean).slice(0,4);$("#homeRecentMusic").innerHTML=ts.length?ts.map(trackRow).join(""):'<div class="muted small">Tracks you play will appear here.</div>';$$("[data-play-game]").forEach(b=>b.onclick=()=>playGame(b.dataset.playGame));$$("[data-fav-game]").forEach(b=>b.onclick=()=>{let id=b.dataset.favGame;state.gamesFav=state.gamesFav.includes(id)?state.gamesFav.filter(x=>x!==id):[...state.gamesFav,id];save();renderHome();renderProfile()});$$("[data-track-play]").forEach(b=>b.onclick=()=>playTrack(b.dataset.trackPlay))}
+function renderProfile(){let p=state.profile||{username:"guest",displayName:"Guest",avatar:"G"};$("#topAvatar").textContent=initials(p.avatar||p.displayName);$("#profileAvatar").textContent=p.avatar||initials(p.displayName);$("#profileName").textContent=p.displayName;$("#profileHandle").textContent="@"+p.username;$("#welcome").textContent="Welcome, "+p.displayName+".";$("#profileGames").textContent=state.gamesFav.map(id=>catalog.find(g=>g.id===id)?.title).filter(Boolean).join(", ")||"No favorites yet.";$("#profileMusic").textContent=state.trackFav.map(id=>state.tracks.find(t=>t.id===id)?.name).filter(Boolean).join(", ")||"No favorites yet.";$("#profilePlaylists").textContent=state.playlists.map(p=>p.name).join(", ")||"No playlists yet."}
+$("#editProfile").onclick=()=>showModal("Edit profile",`<label class="small muted">Display name</label><input class="field" id="editDisplay" value="${esc(state.profile.displayName)}"><label class="small muted">Avatar (emoji or letter)</label><input class="field" id="editAvatar" value="${esc(state.profile.avatar||"✦")}"><button class="btn" id="saveProfile">Save profile</button>`),setTimeout(()=>{$("#saveProfile").onclick=()=>{state.profile.displayName=$("#editDisplay").value.trim()||state.profile.username;state.profile.avatar=$("#editAvatar").value.trim()||"✦";save();sb.from("profiles").update({display_name:state.profile.displayName,avatar:state.profile.avatar}).eq("id",state.profile.id).then(({error})=>{if(error)toast("Profile saved locally, but online update failed: "+error.message);else toast("Profile updated online.")});closeModal();renderProfile()}},0);
+function renderChat(){let q=$("#conversationSearch").value?.toLowerCase()||"";let cs=state.conversations.filter(c=>c.name.toLowerCase().includes(q));$("#conversationList").innerHTML=cs.length?cs.map(c=>`<div class="conversation ${state.activeConversation===c.id?"active":""}" data-conv="${c.id}"><div class="avatar">${esc(c.avatar||initials(c.name))}</div><div style="min-width:0;flex:1"><b style="display:block">${esc(c.name)}</b><span class="muted small">${esc(c.messages.at(-1)?.text||"No messages yet")}</span></div></div>`).join(""):'<div class="empty">No conversations yet. Start a local demo chat.</div>';$$("[data-conv]").forEach(b=>b.onclick=()=>{state.activeConversation=b.dataset.conv;save();renderChat()});let c=state.conversations.find(x=>x.id===state.activeConversation);if(!c){$("#chatTitle").textContent="Choose a conversation";$("#chatAvatar").textContent="N";$("#messages").innerHTML='<div class="empty">Select a conversation to view messages.</div>';return}$("#chatTitle").textContent=c.name;$("#chatAvatar").textContent=c.avatar||initials(c.name);$("#chatSubtitle").textContent=c.group?"Local group demo":"Local conversation demo";$("#messages").innerHTML=c.messages.length?c.messages.map(m=>`<div class="bubble ${m.mine?"mine":""}">${esc(m.text)}<small>${esc(m.time)}</small></div>`).join(""):'<div class="empty">No messages yet. Say hello.</div>';$("#messages").scrollTop=$("#messages").scrollHeight}
+$("#conversationSearch").oninput=renderChat;
+function createConversation(group){let name=prompt(group?"Group name":"Conversation name");if(!name?.trim())return;let c={id:"c"+Date.now(),name:name.trim(),avatar:group?"✧":initials(name),group,messages:[]};state.conversations.unshift(c);state.activeConversation=c.id;save();renderChat()}
+$("#newConversation").onclick=()=>createConversation(false);$("#newGroup").onclick=()=>createConversation(true);
+function sendMessage(){let text=$("#messageInput").value.trim(),c=state.conversations.find(x=>x.id===state.activeConversation);if(!c){toast("Choose or create a conversation first.");return}if(!text)return;c.messages.push({text,mine:true,time:new Date().toLocaleTimeString([],{hour:"2-digit",minute:"2-digit"})});$("#messageInput").value="";save();renderChat()}
+$("#sendMessage").onclick=sendMessage;$("#messageInput").onkeydown=e=>{if(e.key==="Enter"&&!e.shiftKey){e.preventDefault();sendMessage()}};
+function showModal(title,content){$("#modalTitle").textContent=title;$("#modalContent").innerHTML=content;$("#modal").classList.add("open")}function closeModal(){$("#modal").classList.remove("open")}$("#modalClose").onclick=closeModal;$("#modal").onclick=e=>{if(e.target===$("#modal"))closeModal()};
+$("#accentSelect").onchange=()=>{state.accent=$("#accentSelect").value;applySettings();save()};$("#starSetting").onchange=()=>{state.stars=$("#starSetting").value==="on";$("#stars").style.display=state.stars?"block":"none";save()};
+$("#saveSettingsName").onclick=()=>{state.profile.displayName=$("#settingsName").value.trim()||state.profile.username;save();sb.from("profiles").update({display_name:state.profile.displayName}).eq("id",state.profile.id).then(({error})=>{if(error)toast("Online update failed: "+error.message);else toast("Display name saved online.")});renderProfile()};
+$("#exportData").onclick=()=>{let blob=new Blob([JSON.stringify({...state,tracks:state.tracks.map(t=>({...t,src:undefined}))},null,2)],{type:"application/json"}),a=document.createElement("a");a.href=URL.createObjectURL(blob);a.download="nova-hub-local-data.json";a.click();URL.revokeObjectURL(a.href)};
+$("#clearRecent").onclick=()=>{state.recentGames=[];state.recentTracks=[];save();renderHome();toast("Recently played history cleared.")};
+async function logout(){await sb.auth.signOut();state.profile=null;state.guest=false;$("#app").style.display="none";$("#player").style.display="none";$("#accountGate").style.display="grid";$("#audio").pause()}
+$("#logoutBtn").onclick=logout;$("#signOut").onclick=logout;
+function renderAll(){renderProfile();renderGames();renderTracks();renderHome();renderChat()}
+function stars(){let root=$("#stars");for(let i=0;i<75;i++){let s=document.createElement("i");s.className="star";let size=Math.random()*2.5+1;s.style.cssText=`left:${Math.random()*100}%;top:${Math.random()*100}%;width:${size}px;height:${size}px;background:${["#6eb7ff","#ffc46b","#ff6f91","#8fe5b8","#ffffff"][i%5]};animation-delay:${Math.random()*4}s;animation-duration:${2+Math.random()*4}s`;root.append(s)}}
+window.addEventListener("error",e=>{
+  const error=$("#gateError");
+  if(error && $("#gate").style.display!=="none"){
+    error.textContent="A page script error occurred. Close this file and reopen the updated NOVA HUB copy.";
+  }
+});
+stars();initAuth();
+})();
+</script>
+</body></html>
